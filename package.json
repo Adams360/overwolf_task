@@ -1,0 +1,12 @@
+{
+  "name": "overwolf_assignment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "node-sass sass/main.scss css/styles.css -w"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
