@@ -1,12 +1,9 @@
-/* prefixed by https://autoprefixer.github.io (PostCSS: v7.0.26, autoprefixer: v9.7.3) */
-
 *,
 *::before,
 *::after {
   margin: 0;
   padding: 0;
-  -webkit-box-sizing: border-box;
-          box-sizing: border-box; }
+  box-sizing: border-box; }
 
 html {
   font-size: 62.5%;
@@ -18,6 +15,13 @@ body {
 .container {
   min-height: 100vh;
   height: 100%; }
+
+:root {
+  --clr-bronze: #C59A43;
+  --clr-red: #990F35;
+  --clr-red-light: #E6174F;
+  --clr-green-light: #0D803E;
+  --clr-green: #12B357; }
 
 .pillar {
   width: 64px;
@@ -37,24 +41,16 @@ body {
     height: 90%;
     right: calc(50% + 25px); }
     .pillar.left::before {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8))), repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-      background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8)), -o-repeating-linear-gradient(315deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
       background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)), repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px); }
     .pillar.left::after {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8))), repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-      background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8)), -o-repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
       background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)), repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px); }
   .pillar.right {
     height: 80%;
     left: calc(50% + 25px);
     animation: setHeight 6s linear infinite alternate-reverse; }
     .pillar.right::before {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8))), repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-      background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8)), -o-repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
       background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)), repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px); }
     .pillar.right::after {
-      background-image: -webkit-gradient(linear, left top, left bottom, from(transparent), to(rgba(0, 0, 0, 0.8))), repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-      background-image: -o-linear-gradient(top, transparent, rgba(0, 0, 0, 0.8)), -o-repeating-linear-gradient(315deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
       background-image: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)), repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px); }
   .pillar-frame {
     position: absolute;
@@ -64,9 +60,7 @@ body {
     height: calc(100% - 5px);
     border-style: solid;
     border-width: 2px;
-    -o-border-image: -o-linear-gradient(top, #C59A43, #4b3813) 1;
-       border-image: -webkit-gradient(linear, left top, left bottom, from(#C59A43), to(#4b3813)) 1;
-       border-image: linear-gradient(to bottom, #C59A43, #4b3813) 1;
+    border-image: linear-gradient(to bottom, #C59A43, #4b3813) 1;
     z-index: -1; }
   .pillar-top {
     position: absolute;
@@ -77,33 +71,23 @@ body {
     border: 4px #111 solid;
     outline: 2px #C59A43 solid;
     z-index: 1;
-    -webkit-transform: translate(-50%, -50%) rotate(45deg);
-        -ms-transform: translate(-50%, -50%) rotate(45deg);
-            transform: translate(-50%, -50%) rotate(45deg);
-    background-color: #111;
-    -webkit-transform-origin: center center;
-        -ms-transform-origin: center center;
-            transform-origin: center center; }
-    .pillar-top.up {
-      background-image: -o-linear-gradient(315deg, #12B357 50%, #111 50%);
-      background-image: linear-gradient(135deg, #12B357 50%, #111 50%); }
-    .pillar-top.down {
-      background-image: -o-linear-gradient(315deg, #111 50%, #E6174F 50%, #990F35 50%);
-      background-image: linear-gradient(135deg, #111 50%, #E6174F 50%, #990F35 50%); }
-
-@-webkit-keyframes setHeight {
-  0% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%); }
-  100% {
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%); } }
+    transform: translate(-50%, -50%) rotate(45deg);
+    background-color: #111; }
+    .pillar-top::before {
+      content: "";
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 50%;
+      bottom: -50%;
+      transform: translate(-50%, -50%); }
+    .pillar-top.up::before {
+      background-image: linear-gradient(135deg, #111 50%, var(--clr-green-light) 25%, var(--clr-green) 25%); }
+    .pillar-top.down::before {
+      background-image: linear-gradient(135deg, #111 50%, var(--clr-red-light) 25%, var(--clr-red) 25%); }
 
 @keyframes setHeight {
   0% {
-    -webkit-transform: translateY(0%);
-            transform: translateY(0%); }
+    transform: translateY(0%); }
   100% {
-    -webkit-transform: translateY(100%);
-            transform: translateY(100%); } }
-/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInN0eWxlcy5jc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7OztFQUdFLFNBQVM7RUFDVCxVQUFVO0VBQ1YsOEJBQXNCO1VBQXRCLHNCQUFzQixFQUFFOztBQUUxQjtFQUNFLGdCQUFnQjtFQUNoQix5QkFBeUIsRUFBRTs7QUFFN0I7RUFDRSxpQkFBaUIsRUFBRTs7QUFFckI7RUFDRSxpQkFBaUI7RUFDakIsWUFBWSxFQUFFOztBQUVoQjtFQUNFLFdBQVc7RUFDWCxlQUFlO0VBQ2YsVUFBVSxFQUFFO0VBQ1o7SUFDRSxXQUFXO0lBQ1gsa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixVQUFVO0lBQ1YsWUFBWSxFQUFFO0VBQ2hCO0lBQ0UsT0FBTyxFQUFFO0VBQ1g7SUFDRSxRQUFRLEVBQUU7RUFDWjtJQUNFLFdBQVc7SUFDWCx1QkFBdUIsRUFBRTtJQUN6QjtNQUNFLDRMQUE2SjtNQUE3Siw2SkFBNko7TUFBN0osNkpBQTZKLEVBQUU7SUFDaks7TUFDRSw0TEFBNko7TUFBN0osNkpBQTZKO01BQTdKLDZKQUE2SixFQUFFO0VBQ25LO0lBQ0UsV0FBVztJQUNYLHNCQUFzQjtJQUN0Qix5REFBeUQsRUFBRTtJQUMzRDtNQUNFLDRMQUE2SjtNQUE3Siw2SkFBNko7TUFBN0osNkpBQTZKLEVBQUU7SUFDaks7TUFDRSw0TEFBNko7TUFBN0osNkpBQTZKO01BQTdKLDZKQUE2SixFQUFFO0VBQ25LO0lBQ0Usa0JBQWtCO0lBQ2xCLFNBQVM7SUFDVCxVQUFVO0lBQ1Ysd0JBQXdCO0lBQ3hCLHdCQUF3QjtJQUN4QixtQkFBbUI7SUFDbkIsaUJBQWlCO0lBQ2pCLDREQUE0RDtPQUE1RCwyRkFBNEQ7T0FBNUQsNERBQTREO0lBQzVELFdBQVcsRUFBRTtFQUNmO0lBQ0Usa0JBQWtCO0lBQ2xCLE1BQU07SUFDTixTQUFTO0lBQ1QsV0FBVztJQUNYLFlBQVk7SUFDWixzQkFBc0I7SUFDdEIsMEJBQTBCO0lBQzFCLFVBQVU7SUFDVixzREFBOEM7UUFBOUMsa0RBQThDO1lBQTlDLDhDQUE4QztJQUM5QyxzQkFBc0I7SUFDdEIsdUNBQStCO1FBQS9CLG1DQUErQjtZQUEvQiwrQkFBK0IsRUFBRTtJQUNqQztNQUNFLG1FQUFnRTtNQUFoRSxnRUFBZ0UsRUFBRTtJQUNwRTtNQUNFLGdGQUE2RTtNQUE3RSw2RUFBNkUsRUFBRTs7QUFFckY7RUFDRTtJQUNFLGlDQUF5QjtZQUF6Qix5QkFBeUIsRUFBRTtFQUM3QjtJQUNFLG1DQUEyQjtZQUEzQiwyQkFBMkIsRUFBRSxFQUFFOztBQUpuQztFQUNFO0lBQ0UsaUNBQXlCO1lBQXpCLHlCQUF5QixFQUFFO0VBQzdCO0lBQ0UsbUNBQTJCO1lBQTNCLDJCQUEyQixFQUFFLEVBQUUiLCJmaWxlIjoidG8uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiKixcbio6OmJlZm9yZSxcbio6OmFmdGVyIHtcbiAgbWFyZ2luOiAwO1xuICBwYWRkaW5nOiAwO1xuICBib3gtc2l6aW5nOiBib3JkZXItYm94OyB9XG5cbmh0bWwge1xuICBmb250LXNpemU6IDYyLjUlO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTcxODFjOyB9XG5cbmJvZHkge1xuICBmb250LXNpemU6IDEuNnJlbTsgfVxuXG4uY29udGFpbmVyIHtcbiAgbWluLWhlaWdodDogMTAwdmg7XG4gIGhlaWdodDogMTAwJTsgfVxuXG4ucGlsbGFyIHtcbiAgd2lkdGg6IDY0cHg7XG4gIHBvc2l0aW9uOiBmaXhlZDtcbiAgYm90dG9tOiAwJTsgfVxuICAucGlsbGFyOjpiZWZvcmUsIC5waWxsYXI6OmFmdGVyIHtcbiAgICBjb250ZW50OiAnJztcbiAgICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gICAgdG9wOiAwO1xuICAgIHdpZHRoOiA1MCU7XG4gICAgaGVpZ2h0OiAxMDAlOyB9XG4gIC5waWxsYXI6OmJlZm9yZSB7XG4gICAgbGVmdDogMDsgfVxuICAucGlsbGFyOjphZnRlciB7XG4gICAgcmlnaHQ6IDA7IH1cbiAgLnBpbGxhci5sZWZ0IHtcbiAgICBoZWlnaHQ6IDkwJTtcbiAgICByaWdodDogY2FsYyg1MCUgKyAyNXB4KTsgfVxuICAgIC5waWxsYXIubGVmdDo6YmVmb3JlIHtcbiAgICAgIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sIHRyYW5zcGFyZW50LCByZ2JhKDAsIDAsIDAsIDAuOCkpLCByZXBlYXRpbmctbGluZWFyLWdyYWRpZW50KDEzNWRlZywgI0M1OUE0MywgI0M1OUE0MyAyMHB4LCAjMTExIDIwcHgsICMxMTEgMjNweCk7IH1cbiAgICAucGlsbGFyLmxlZnQ6OmFmdGVyIHtcbiAgICAgIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sIHRyYW5zcGFyZW50LCByZ2JhKDAsIDAsIDAsIDAuOCkpLCByZXBlYXRpbmctbGluZWFyLWdyYWRpZW50KDIyNWRlZywgI0M1OUE0MywgI0M1OUE0MyAyMHB4LCAjMTExIDIwcHgsICMxMTEgMjNweCk7IH1cbiAgLnBpbGxhci5yaWdodCB7XG4gICAgaGVpZ2h0OiA4MCU7XG4gICAgbGVmdDogY2FsYyg1MCUgKyAyNXB4KTtcbiAgICBhbmltYXRpb246IHNldEhlaWdodCA2cyBsaW5lYXIgaW5maW5pdGUgYWx0ZXJuYXRlLXJldmVyc2U7IH1cbiAgICAucGlsbGFyLnJpZ2h0OjpiZWZvcmUge1xuICAgICAgYmFja2dyb3VuZC1pbWFnZTogbGluZWFyLWdyYWRpZW50KHRvIGJvdHRvbSwgdHJhbnNwYXJlbnQsIHJnYmEoMCwgMCwgMCwgMC44KSksIHJlcGVhdGluZy1saW5lYXItZ3JhZGllbnQoMjI1ZGVnLCAjQzU5QTQzLCAjQzU5QTQzIDIwcHgsICMxMTEgMjBweCwgIzExMSAyM3B4KTsgfVxuICAgIC5waWxsYXIucmlnaHQ6OmFmdGVyIHtcbiAgICAgIGJhY2tncm91bmQtaW1hZ2U6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sIHRyYW5zcGFyZW50LCByZ2JhKDAsIDAsIDAsIDAuOCkpLCByZXBlYXRpbmctbGluZWFyLWdyYWRpZW50KDEzNWRlZywgI0M1OUE0MywgI0M1OUE0MyAyMHB4LCAjMTExIDIwcHgsICMxMTEgMjNweCk7IH1cbiAgLnBpbGxhci1mcmFtZSB7XG4gICAgcG9zaXRpb246IGFic29sdXRlO1xuICAgIGJvdHRvbTogMDtcbiAgICBsZWZ0OiAtNXB4O1xuICAgIHdpZHRoOiBjYWxjKDEwMCUgKyAxMHB4KTtcbiAgICBoZWlnaHQ6IGNhbGMoMTAwJSAtIDVweCk7XG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbiAgICBib3JkZXItd2lkdGg6IDJweDtcbiAgICBib3JkZXItaW1hZ2U6IGxpbmVhci1ncmFkaWVudCh0byBib3R0b20sICNDNTlBNDMsICM0YjM4MTMpIDE7XG4gICAgei1pbmRleDogLTE7IH1cbiAgLnBpbGxhci10b3Age1xuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgICB0b3A6IDA7XG4gICAgbGVmdDogNTAlO1xuICAgIHdpZHRoOiAyMHB4O1xuICAgIGhlaWdodDogMjBweDtcbiAgICBib3JkZXI6IDRweCAjMTExIHNvbGlkO1xuICAgIG91dGxpbmU6IDJweCAjQzU5QTQzIHNvbGlkO1xuICAgIHotaW5kZXg6IDE7XG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUoLTUwJSwgLTUwJSkgcm90YXRlKDQ1ZGVnKTtcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjMTExO1xuICAgIHRyYW5zZm9ybS1vcmlnaW46IGNlbnRlciBjZW50ZXI7IH1cbiAgICAucGlsbGFyLXRvcC51cCB7XG4gICAgICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjMTJCMzU3IDUwJSwgIzExMSA1MCUpOyB9XG4gICAgLnBpbGxhci10b3AuZG93biB7XG4gICAgICBiYWNrZ3JvdW5kLWltYWdlOiBsaW5lYXItZ3JhZGllbnQoMTM1ZGVnLCAjMTExIDUwJSwgI0U2MTc0RiA1MCUsICM5OTBGMzUgNTAlKTsgfVxuXG5Aa2V5ZnJhbWVzIHNldEhlaWdodCB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZVkoMCUpOyB9XG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlWSgxMDAlKTsgfSB9XG4iXX0= */
+    transform: translateY(100%); } }

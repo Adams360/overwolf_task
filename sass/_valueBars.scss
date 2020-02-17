@@ -20,12 +20,12 @@
         &::before {
             background-image:
             linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
+            repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
         &::after {
             background-image:
             linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-                repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
+            repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
     }
 
@@ -42,7 +42,8 @@
         &::after {
             background-image:
                 linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
+                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px),
+              
         }
     }
 
@@ -69,21 +70,37 @@
         z-index: 1;
         transform: translate(-50%, -50%) rotate(45deg);
         background-color:#111;
-        transform-origin: center center;
+
+        &::before {
+            content: "";
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            left: 50%;
+            bottom: -50%;
+            transform: translate(-50%, -50%);
+        }
 
         &.up { 
-            background-image: linear-gradient(
-            135deg,
-            #12B357 50%, 
-            #111 50%); 
-        }
-        &.down { background-image: 
-            linear-gradient(
-            135deg, 
-            #111 50%, 
-            #E6174F 50%,
-            #990F35 50%);
+                &::before {
+                    background-image: 
+                    linear-gradient(
+                        135deg, 
+                        #111 50%, 
+                        var(--clr-green-light) 25%,
+                        var(--clr-green) 25%);
+                }
+            }
 
+        &.down { 
+            &::before {
+                background-image: 
+                linear-gradient(
+                135deg, 
+                #111 50%, 
+                var(--clr-red-light) 25%,
+                var(--clr-red) 25%);
+            }
          }
     }
 }
