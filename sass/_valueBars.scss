@@ -2,6 +2,7 @@
     width: 64px;
     position: fixed;
     bottom: 0%;
+    backface-visibility: hidden;
     &::before, 
     &::after {
         content: '';
@@ -32,7 +33,7 @@
     &.right {
         height: 80%;
         left: calc(50% + 25px);
-        animation: setHeight 6s linear infinite alternate-reverse;
+        animation: setHeight 6s ease-in-out infinite alternate-reverse;
 
         &::before {
             background-image:
