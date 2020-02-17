@@ -4,9 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "watch": "node-sass sass/main.scss css/styles.css -w"
+    "watch": "node-sass sass/main.scss css/styles.css -w",
+    "autoprefixer": "postcss -u autoprefixer -r css/*"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "autoprefixer": "^9.7.4",
+    "postcss": "^7.0.26",
+    "postcss-cli": "^7.1.0"
+  }
 }

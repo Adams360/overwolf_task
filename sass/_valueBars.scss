@@ -1,47 +1,48 @@
 .pillar {
-    height: 90%;
-    width: 70px;
+    width: 64px;
     position: fixed;
-    bottom: 0;
-    animation: setHeight 10s ease-in-out infinite;
-
-    &::before, &::after {
+    bottom: 0%;
+    &::before, 
+    &::after {
         content: '';
         position: absolute;
         top: 0;
         width: 50%;
-        height: 100%;
+        height: 100%; 
     }
 
     &::before { left: 0; }
     &::after { right: 0; }
 
-    &.up {
-        left: calc(50% + 25px);
+    &.left {
+        height: 90%;
+        right: calc(50% + 25px);
         &::before {
             background-image:
-                linear-gradient(transparent 0, rgba(0,20,0,0.5) 100%),
-                repeating-linear-gradient(135deg, #b39859, #b39859 20px, transparent 20px, transparent 23px);
+            linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
+                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
         &::after {
             background-image:
-                linear-gradient(transparent 0, rgba(0,20,0,0.5) 100%),
-                repeating-linear-gradient(225deg, #b39859, #b39859 20px, transparent 20px, transparent 23px);
+            linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
+                repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
     }
 
-    &.down {
-        right: calc(50% + 25px);
-        animation-delay: -2.5s;
+    &.right {
+        height: 80%;
+        left: calc(50% + 25px);
+        animation: setHeight 6s linear infinite alternate-reverse;
+
         &::before {
             background-image:
-                linear-gradient(rgba(20,0,0,0.5) 0, transparent 100%),
-                repeating-linear-gradient(225deg, #b39859, #b39859 20px, transparent 20px, transparent 23px);
+                linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
+                repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
         &::after {
             background-image:
-                linear-gradient(rgba(20,0,0,0.5) 0, transparent 100%),
-                repeating-linear-gradient(135deg, #b39859, #b39859 20px, transparent 20px, transparent 23px);
+                linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
+                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
         }
     }
 
@@ -52,8 +53,8 @@
         width: calc(100% + 10px);
         height: calc(100% - 5px);
         border-style: solid;
-        border-width: 1px;
-        border-image: linear-gradient(to bottom, #b39859, #b39859) 1;
+        border-width: 2px;
+        border-image: linear-gradient(to bottom, #C59A43, rgb(75, 56, 19)) 1;
         z-index: -1;
     }
 
@@ -63,34 +64,38 @@
         left: 50%;
         width: 20px;
         height: 20px;
-        border: 4px black solid;
-        outline: 2px #b39859 solid;
+        border: 4px #111 solid;
+        outline: 2px #C59A43 solid;
         z-index: 1;
         transform: translate(-50%, -50%) rotate(45deg);
-        background:black;
+        background-color:#111;
+        transform-origin: center center;
 
-        .up & { 
+        &.up { 
             background-image: linear-gradient(
             135deg,
             #12B357 50%, 
-            #0D803E 50%,
-            black 50%); 
+            #111 50%); 
         }
-        .down & { background-image: 
+        &.down { background-image: 
             linear-gradient(
             135deg, 
-            black 50%, 
-            #E6174F 50% ,
-            #990F35 50%); }
+            #111 50%, 
+            #E6174F 50%,
+            #990F35 50%);
 
+         }
     }
 }
 
-// @keyframes setHeight {
-//     0%, 75%, 100% {
-//          height: 33vh; 
-//         }
-//     25%, 50% {
-//          height: 66vh; 
-//         }
-// }
+@keyframes setHeight {
+    0% {
+        //  height: 40%; 
+        transform: translateY(0%)
+        }
+    100% {
+        //  height: 80%; 
+        transform: translateY(100%)
+    }
+}
+

@@ -10,11 +10,15 @@ html {
     font-size: 62.5%;
     // make 1 rem = 10px
     background-color: #17181c;
-    height: 100vh;
 }
 
 body {
     font-size: 1.6rem;
+}
+
+.container {
+    min-height: 100vh;
+    height: 100%;
 }
 
 
