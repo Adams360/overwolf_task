@@ -1,119 +1,153 @@
-.pillar {
-    width: 64px;
-    position: fixed;
-    bottom: 0%;
-    backface-visibility: hidden;
-    &::before, 
+.pillars {
+    display: flex;
+    align-items: flex-end;
+    height: calc(70vh - 30px); // Minus the pillars header size
+    min-width: 160px;
+    width: 160px;
+    justify-content: space-between;
+    position: relative;
+
+    // Pillars Shadow
+    &::before,
     &::after {
-        content: '';
+        content: "";
         position: absolute;
-        top: 0;
-        width: 50%;
-        height: 100%; 
+        width: 72px;
+        bottom: -5px;
+        top: 5px;
+        background: linear-gradient(to bottom, rgba($color-dark, 0), rgba($color-dark, 0.6));
+        z-index: 40;
     }
 
-    &::before { left: 0; }
-    &::after { right: 0; }
-
-    &.left {
-        height: 90%;
-        right: calc(50% + 25px);
-        &::before {
-            background-image:
-            linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-            repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-        }
-        &::after {
-            background-image:
-            linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-            repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-        }
+    // Right pillar
+    &::before {
+        right: -5px;
     }
 
-    &.right {
-        height: 80%;
-        left: calc(50% + 25px);
-        animation: setHeight 6s ease-in-out infinite alternate-reverse;
-
-        &::before {
-            background-image:
-                linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-                repeating-linear-gradient(225deg, #C59A43, #C59A43 20px, #111 20px, #111 23px);
-        }
-        &::after {
-            background-image:
-                linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.8)),
-                repeating-linear-gradient(135deg, #C59A43, #C59A43 20px, #111 20px, #111 23px),
-              
-        }
-    }
-
-    &-frame {
-        position: absolute;
-        bottom: 0;
+    // Left pillar
+    &::after {
         left: -5px;
-        width: calc(100% + 10px);
-        height: calc(100% - 5px);
-        border-style: solid;
-        border-width: 2px;
-        border-image: linear-gradient(to bottom, #C59A43, rgb(75, 56, 19)) 1;
-        z-index: -1;
     }
 
-    &-top {
-        position: absolute;
-        top: 0;
-        left: 50%;
-        width: 20px;
-        height: 20px;
-        border: 4px #111 solid;
-        outline: 2px #C59A43 solid;
-        z-index: 1;
-        transform: translate(-50%, -50%) rotate(45deg);
-        background-color:#111;
 
+
+
+    .pillar {
+        width: 62px;
+        height: 100%;
+        position: relative;
+        backface-visibility: hidden;
+        // Borders
         &::before {
             content: "";
-            width: 100%;
-            height: 100%;
             position: absolute;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            top: 5px;
+            border: 2px solid $pillar-borders;
+        }
+
+        // Arrow Background
+        &::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            top: 0;
+            background-position: top 58px center;
+            background-color: $pillar-backround;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 4L0 35V31L31 0L62 31V35L31 4Z' fill='%2317181C'/%3E%3C/svg%3E");
+            z-index: 30;
+        }
+
+        &.right {
+            animation: slideDown 8s ease-in-out infinite;
+
+            &:after {
+                transform: scaleY(-1);
+            }
+        }
+
+
+
+        &__top {
+            position: absolute;
+            top: 0;
             left: 50%;
-            bottom: -50%;
-            transform: translate(-50%, -50%);
-        }
+            width: 24px;
+            height: 24px;
+            z-index: 50;
+            transform: translate(-50%, -50%) rotate(45deg);
+            background: linear-gradient(130deg, #f1bc51, #917444);
 
-        &.up { 
-                &::before {
-                    background-image: 
-                    linear-gradient(
-                        135deg, 
-                        #111 50%, 
-                        var(--clr-green-light) 25%,
-                        var(--clr-green) 25%);
-                }
+            // Color indicator
+            &::before,
+            &:after {
+                content: "";
+                position: absolute;
+                z-index: 50;
             }
-
-        &.down { 
+            // Triangle cover
             &::before {
-                background-image: 
-                linear-gradient(
-                135deg, 
-                #111 50%, 
-                var(--clr-red-light) 25%,
-                var(--clr-red) 25%);
+                width: 0;
+                height: 0;
+                z-index: 60;
+                transform-origin: bottom;
             }
-         }
-    }
-}
 
-@keyframes setHeight {
-    0% {
-        //  height: 40%; 
-        transform: translateY(0%)
+            // Color indicator
+            &:after {
+                top: 3px;
+                right: 3px;
+                left: 3px;
+                bottom: 3px;
+                border: 3px solid #111;
+            }
+
+		// Green Color
+		&.up {
+			// Triangle cover
+			&::before {
+				border-left: 12px solid transparent;
+				border-right: 12px solid transparent;
+				border-top: 12px solid #111;
+				transform: rotate(315deg) translateY(12px);
+			}
+
+			// Color indicator
+			&:after {
+				background: linear-gradient(141deg, #12b357 15%, #0d803e 50%);
+			}
+		}
+
+		// Red Color
+		&.down {
+			// Triangle cover
+			&::before {
+				border-left: 12px solid transparent;
+				border-right: 12px solid transparent;
+				border-top: 12px solid #111;
+				transform: rotate(-225deg) translateY(12px);
+			}
+
+			// Color indicator
+			&:after {
+				background: linear-gradient(-40deg, #e6174f 15%, #990f35 50%);
+			}
+		}
+
         }
-    100% {
-        //  height: 80%; 
-        transform: translateY(100%)
+
+
     }
+
 }
 
+
+// @keyframes slideDown {
+// 	50% {
+// 		transform: translateY(50%);
+// 	}
+// }

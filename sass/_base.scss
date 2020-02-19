@@ -6,20 +6,22 @@
     box-sizing: border-box;
 }
 
+body {
+    font-size: 1.6rem;
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	height: 100vh;
+	overflow: hidden;
+}
+
 html {
     font-size: 62.5%;
     // make 1 rem = 10px
-    background-color: #17181c;
+    background-color: $color-dark;
 }
 
-body {
-    font-size: 1.6rem;
-}
 
-.container {
-    min-height: 100vh;
-    height: 100%;
-}
 
 
 
