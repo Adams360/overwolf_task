@@ -1,12 +1,25 @@
+// Pillar Current Height
 :root {
-    --clr-bronze: #C59A43;
-    --clr-red: #990F35;
-    --clr-red-light: #E6174F;
-    --clr-green-light: #0D803E;
-    --clr-green: #12B357;
-
+    --pillarHeight: 0%;
+    --pillarGradientPosition: calc(100% - var(--pillarHeight));
 }
 
-$color-dark: #17181C;
-$pillar-backround: #c59a43;
-$pillar-borders: #917444;
+
+$main-gold: #F1BC51; // Top Bar Head gradient 1
+$dim-gold: #C59A43; // overall gradient 1 (0%)
+$bronze: #917444; // Top Bar Head gradient 2  && top pillar frame gradient 1
+
+$brown: #261F12; // overall gradient 2 (99.19%%) 180deg && top pillar frame gradient 2
+$grey_20: #17181C;
+
+// border: 2px solid #17181C; 
+// linear-gradient(360deg, #E6174F 0%, #990F35 50%);
+$red_gradient_1: #E6174F;
+$red_gradient_2: #990F35;
+// 180deg, #12B257 0%, #0D803E 52.5%);
+$green_gradient_1: #12B357;
+$green_gradient_2: #0D803E;
+
+
+
+

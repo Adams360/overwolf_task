@@ -18,10 +18,14 @@ body {
 html {
     font-size: 62.5%;
     // make 1 rem = 10px
-    background-color: $color-dark;
+    background-color: $grey_20;
 }
 
 
-
+.sliders {
+    position: absolute;
+    right: -50rem;
+    bottom: 20rem;
+}
 
 

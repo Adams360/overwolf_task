@@ -1,9 +1,6 @@
 :root {
-  --clr-bronze: #C59A43;
-  --clr-red: #990F35;
-  --clr-red-light: #E6174F;
-  --clr-green-light: #0D803E;
-  --clr-green: #12B357; }
+  --pillarHeight: 0%;
+  --pillarGradientPosition: calc(100% - var(--pillarHeight)); }
 
 *,
 *::before,
@@ -24,31 +21,26 @@ html {
   font-size: 62.5%;
   background-color: #17181C; }
 
+.sliders {
+  position: absolute;
+  right: -50rem;
+  bottom: 20rem; }
+
 .pillars {
   display: flex;
   align-items: flex-end;
   height: calc(70vh - 30px);
-  min-width: 160px;
-  width: 160px;
+  min-width: 270px;
+  width: 270px;
   justify-content: space-between;
   position: relative; }
-  .pillars::before, .pillars::after {
-    content: "";
-    position: absolute;
-    width: 72px;
-    bottom: -5px;
-    top: 5px;
-    background: linear-gradient(to bottom, rgba(23, 24, 28, 0), rgba(23, 24, 28, 0.6));
-    z-index: 40; }
-  .pillars::before {
-    right: -5px; }
-  .pillars::after {
-    left: -5px; }
   .pillars .pillar {
     width: 62px;
     height: 100%;
     position: relative;
-    backface-visibility: hidden; }
+    backface-visibility: hidden;
+    transition: all 2s ease-in-out;
+    transform: translateY(var(--pillarHeight)); }
     .pillars .pillar::before {
       content: "";
       position: absolute;
@@ -56,22 +48,20 @@ html {
       right: -5px;
       bottom: -5px;
       top: 5px;
-      border: 2px solid #917444; }
+      border: 2px solid;
+      border-image: linear-gradient(#917444, #261F12) 1; }
     .pillars .pillar::after {
       content: "";
       position: absolute;
-      left: 0;
-      right: 0;
+      width: 100%;
+      height: 100%;
       bottom: 0;
-      top: 0;
-      background-position: top 58px center;
-      background-color: #c59a43;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 4L0 35V31L31 0L62 31V35L31 4Z' fill='%2317181C'/%3E%3C/svg%3E");
+      left: 0;
+      background-position: center 22px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 4L0 35V31L31 0L62 31V35L31 4Z' fill='%2317181C'/%3E%3C/svg%3E"), linear-gradient(#C59A43 0%, #261F12 var(--pillarGradientPosition));
       z-index: 30; }
     .pillars .pillar.right {
       animation: slideDown 8s ease-in-out infinite; }
-      .pillars .pillar.right:after {
-        transform: scaleY(-1); }
     .pillars .pillar__top {
       position: absolute;
       top: 0;
@@ -80,7 +70,7 @@ html {
       height: 24px;
       z-index: 50;
       transform: translate(-50%, -50%) rotate(45deg);
-      background: linear-gradient(130deg, #f1bc51, #917444); }
+      background: linear-gradient(130deg, #F1BC51, #917444); }
       .pillars .pillar__top::before, .pillars .pillar__top:after {
         content: "";
         position: absolute;
@@ -95,18 +85,18 @@ html {
         right: 3px;
         left: 3px;
         bottom: 3px;
-        border: 3px solid #111; }
+        border: 3px solid #17181C; }
       .pillars .pillar__top.up::before {
         border-left: 12px solid transparent;
         border-right: 12px solid transparent;
-        border-top: 12px solid #111;
+        border-top: 12px solid #17181C;
         transform: rotate(315deg) translateY(12px); }
       .pillars .pillar__top.up:after {
-        background: linear-gradient(141deg, #12b357 15%, #0d803e 50%); }
+        background: linear-gradient(135deg, #12B357 0%, #0D803E 52.5%); }
       .pillars .pillar__top.down::before {
         border-left: 12px solid transparent;
         border-right: 12px solid transparent;
-        border-top: 12px solid #111;
+        border-top: 12px solid #17181C;
         transform: rotate(-225deg) translateY(12px); }
       .pillars .pillar__top.down:after {
-        background: linear-gradient(-40deg, #e6174f 15%, #990f35 50%); }
+        background: linear-gradient(315deg, #E6174F 0%, #990F35 50%); }
