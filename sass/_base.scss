@@ -3,29 +3,12 @@
 *::after {
     margin: 0;
     padding: 0;
-    box-sizing: border-box;
+    box-sizing: inherit;
 }
 
 body {
-    font-size: 1.6rem;
-	display: flex;
-	justify-content: center;
-	align-items: flex-end;
-	height: 100vh;
-	overflow: hidden;
-}
-
-html {
-    font-size: 62.5%;
-    // make 1 rem = 10px
+    box-sizing: border-box;
     background-color: $grey_20;
-}
-
-
-.sliders {
-    position: absolute;
-    right: -50rem;
-    bottom: 20rem;
 }
 
 

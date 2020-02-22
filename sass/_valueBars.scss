@@ -1,141 +1,127 @@
+// Pillar's Container
 .pillars {
-    display: flex;
-    align-items: flex-end;
-    height: calc(70vh - 30px); // Minus the pillars header size
-    min-width: 270px;
-    width: 270px;
-    justify-content: space-between;
-    position: relative;
+    display: block;
+    position: fixed;
+    height: 100vh;
+    width: 300px;
+    bottom: 0;
+    left: calc(50% - 150px);
 
+    // Pillar's Styles
     .pillar {
+        position: absolute;
+        bottom: 0;
         width: 62px;
-        height: 100%;
-        position: relative;
-        backface-visibility: hidden;
-        transform: translateY( var(--pillarHeight));
-        transition: transform 6s ease-in-out;
-
-
         &.left {
-            height: 90%;
+            left: 30px;
+            height: var(--leftPillarHeight);
         }
-
         &.right {
-            height: 80%;
-            animation: slide 8s ease-in-out infinite;
-
+            right: 30px;
+            height: var(--rightPillarHeight);
         }
 
-        &__direction {
-            position: relative;
-            height: 100%;
-            width: 100%;
-            z-index: 1500;
-
-            &--up {
-                background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 4L0 35V31L31 0L62 31V35L31 4Z' fill='%2317181C'/%3E%3C/svg%3E");
-                background-position: center 22.2px;
-            }
-            &--down {
-                background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 31L62 5.42021e-06V4.00001L31 35L0 4L3.49691e-07 0L31 31Z' fill='%2317181C'/%3E%3C/svg%3E");
-                background-position: center 32.2px;
-            }
-        }
 
         // Pillar's Frame
         &::before {
             content: "";
             position: absolute;
-            left: -5px;
+            top: 4px;
             right: -5px;
-            bottom: -5px;
-            top: 5px;
+            bottom: 0;
+            left: -5px;
             border: 2px solid;
             border-image: linear-gradient($bronze, $brown) 1;
         }
 
-        // Arrow Background
+        // Pillar's (body) Gradient
         &::after {
             content: "";
             position: absolute;
-            width: 100%;
-            height: 100%;
             bottom: 0;
             left: 0;
-            background-position: center;
-            background-image:
-            linear-gradient($dim-gold 0%, $brown var(--pillarGradientPosition));
-            z-index: 30;
+            width: 100%;
+            height: 100%;
+            background-image: linear-gradient($dim-gold, $brown);
         }
 
-    
+         // Pillar's child div for the arrows direction
+        &__direction {
+            position: relative;
+            background-position: center;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+
+            &--up {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 4L0 35V31L31 0L62 31V35L31 4Z' fill='%2317181C'/%3E%3C/svg%3E");
+              
+                background-position-y: 22.2px;
+            }
+            &--down {
+                background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='62' height='35' viewBox='0 0 62 35'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M31 31L62 5.42021e-06V4.00001L31 35L0 4L3.49691e-07 0L31 31Z' fill='%2317181C'/%3E%3C/svg%3E");
+
+                background-position-y: 32.2px;
+            }
+        }
+
+
+        // Pillar's top indicator
         &__top {
             position: absolute;
-            top: 0;
-            left: 50%;
+            top: -12px;
+            left: calc(50% - 12px);
             width: 24px;
             height: 24px;
-            transform: translate(-50%, -50%) rotate(45deg);
+            transform: rotate(45deg);
             background: linear-gradient(130deg, $main-gold, $bronze);
-            z-index: 2500;
+            z-index: 2;
 
-            // Color indicator
             &::before,
-            &:after {
+            &::after {
                 content: "";
                 position: absolute;
-                z-index: 50;
-            }
-            // Triangle cover
-            &::before {
-                width: 0;
-                height: 0;
-                z-index: 60;
-                transform-origin: bottom;
             }
 
-            // Color indicator
-            &:after {
+            // Dark background inside top indicator
+            &::before {
                 top: 3px;
                 right: 3px;
                 left: 3px;
                 bottom: 3px;
-                border: 3px solid $grey_20;
+                background-color: $grey_20;
             }
 
-		// Green Color
-		&.upDiamond {
-			// Triangle cover
-			&::before {
-				border-left: 12px solid transparent;
-				border-right: 12px solid transparent;
-				border-top: 12px solid $grey_20;
-				transform: rotate(315deg) translateY(12px);
-			}
+            
+            // Pillar's top indicator - Inner Diamond
+            &::after {
+                top: 6px;
+                right: 6px;
+                left: 6px;
+                bottom: 6px;
+            }
 
-			// Color indicator
-			&:after {
-				background: linear-gradient(135deg, $green_gradient_1 0%, $green_gradient_2 52.5%);
-			}
-		}
+             // Diamond Color
+            &.upDiamond::after { 
+                background: linear-gradient(135deg, $green_gradient_1 0%, $green_gradient_2 50%, transparent 50%);
+            }
+            &.downDiamond::after {
+                background: linear-gradient(315deg, $red_gradient_1 0%, $red_gradient_2 50%, transparent 50%);
+            }
 
-		// Red Color
-		&.downDiamond {
-			// Triangle cover
-			&::before {
-				border-left: 12px solid transparent;
-				border-right: 12px solid transparent;
-				border-top: 12px solid $grey_20;
-				transform: rotate(-225deg) translateY(12px);
-			}
-			// Color indicator
-			&:after {
-				background: linear-gradient(315deg, $red_gradient_1 0%, $red_gradient_2 50%);
-			}
-		}
+        }
+        
     }
-   }
+
 }
 
+
+
+
+.mySvg {
+    position: absolute;
+    bottom: 98px;
+    left: 13px;
+    z-index: 5252;
+    display: none;
+}

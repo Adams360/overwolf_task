@@ -1,10 +1,10 @@
-// Pillar Current Height
 :root {
-    --pillarHeight: 0%;
-    --pillarGradientPosition: calc(100% - var(--pillarHeight));
-}
+    --leftPillarHeight: 60%;
+    --rightPillarHeight: 40%;
+  }
+  
 
-
+// Sass Color Variables
 $main-gold: #F1BC51; // Top Bar Head gradient 1
 $dim-gold: #C59A43; // overall gradient 1 (0%)
 $bronze: #917444; // Top Bar Head gradient 2  && top pillar frame gradient 1
