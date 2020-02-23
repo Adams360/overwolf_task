@@ -1,7 +1,14 @@
 let root = document.documentElement;
-let pillar = document.querySelector('.pillar');
+const requestAnimationFrame = window.requestAnimationFrame;
+
+function run() {
+    let h = (40 + Math.cos(performance.now() / 3000) * 40) + '%'
+
+    root.style.setProperty('--rightPillarHeight', h);
+    requestAnimationFrame(run);
+}
+
+run();
 
 
-// root.addEventListener("mousemove", e => {
-//     root.style.setProperty('--pillarHeight', e.clientX + "%");
-//   });
+
